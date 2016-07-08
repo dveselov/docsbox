@@ -3,3 +3,4 @@ Flask-RESTful==0.3.5
 Flask-RQ2==16.0.2
 pylokit==0.8.1
 python-libmagic==0.4.0
+wand==0.4.3
