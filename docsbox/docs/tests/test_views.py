@@ -17,11 +17,11 @@ class BaseTestCase(unittest.TestCase):
         self.client = docsbox.app.test_client()
 
     def submit_file(self, filename, options):
-        headers = {"Content-Type": "multipart/form-data"}
-        response = self.client.post("/api/v1/", headers=headers, data={
-            "file": open(filename, "rb"),
-            "options": ujson.dumps(options),
-        })
+        with open(filename, "rb") as source:
+            response = self.client.post("/api/v1/", data={
+                "file": source,
+                "options": ujson.dumps(options),
+            })
         return response
 
 class DocumentViewTestCase(BaseTestCase):
