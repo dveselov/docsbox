@@ -4,7 +4,7 @@ from flask_restful import Api
 
 
 app = Flask(__name__)
-app.config.from_object("config")
+app.config.from_object("settings")
 
 api = Api(app)
 rq = RQ(app)
