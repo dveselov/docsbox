@@ -8,6 +8,8 @@ Raised when trying to export to unsupported dest (eg. pptx -> txt)
 
 DEBUG = os.environ.get("DEBUG", False)
 
+RQ_REDIS_URL = os.environ.get("REDIS_URL", "redis://localhost:6379/0")
+
 BASE_DIR = os.path.abspath(os.path.dirname(__file__)) 
 MEDIA_PATH = os.path.join(BASE_DIR, "media/")
 MEDIA_URL = "/media/"
