@@ -59,6 +59,7 @@ options={ # optional
 }
 
 GET /api/v1/{task_id}
+```
 
 # Settings
 ```
