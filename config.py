@@ -1,4 +1,4 @@
-import os.path
+import os
 
 """
 TODO:
@@ -27,9 +27,9 @@ SUPPORTED_MIMETYPES = {
     }
 }
 
-DEBUG = True
+DEBUG = os.environ.get("DEBUG", False)
 
-LIBREOFFICE_PATH = "/usr/lib/libreoffice/program/" # for ubuntu 16.04
+LIBREOFFICE_PATH = os.environ.get("LIBREOFFICE_PATH", "/usr/lib/libreoffice/program/") # for ubuntu 16.04
 
 BASE_DIR = os.path.abspath(os.path.dirname(__file__)) 
 
