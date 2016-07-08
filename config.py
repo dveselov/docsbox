@@ -21,10 +21,21 @@ SUPPORTED_FORMATS = {
     }
 }
 
+DOCUMENT_EXPORT_FORMATS = ["pdf", "txt", "html"]
+
 SUPPORTED_MIMETYPES = {
-    "application/ms-word": {
-        "formats": ["pdf", "txt", "html"],
-    }
+    # Microsoft Word 2003
+    "application/msword": {
+        "formats": DOCUMENT_EXPORT_FORMATS,
+    },
+    # Microsoft Word 2007
+    "application/vnd.openxmlformats-officedocument.wordprocessingml.document": {
+        "formats": DOCUMENT_EXPORT_FORMATS,
+    },
+    # LibreOffice Writer
+    "application/vnd.oasis.opendocument.text": {
+        "formats": DOCUMENT_EXPORT_FORMATS,
+    },
 }
 
 DEBUG = os.environ.get("DEBUG", False)
