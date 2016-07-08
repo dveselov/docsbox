@@ -20,9 +20,8 @@ def remove_file(path):
 
 
 @rq.job
-def proccess_document(path, options):
+def process_document(path, options):
     current_task = get_current_job()
-    remove_file.schedule(datetime.timedelta(seconds=app.config["ORIGINAL_FILE_TTL"]), path)
     with Office(app.config["LIBREOFFICE_PATH"]) as office: # acquire libreoffice lock
         with office.documentLoad(path) as original_document: # open original document
             with TemporaryDirectory() as tmp_dir: # create temp dir where output'll be stored

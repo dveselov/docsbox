@@ -1,3 +1,5 @@
+import datetime
+
 from magic import Magic
 from tempfile import NamedTemporaryFile
 
@@ -5,7 +7,7 @@ from flask import request
 from flask_restful import Resource, abort
 
 from docsbox import app, rq
-from docsbox.docs.tasks import proccess_document
+from docsbox.docs.tasks import remove_file, process_document
 
 
 class DocumentView(Resource):
@@ -31,11 +33,13 @@ class DocumentCreateView(Resource):
         else:
             with NamedTemporaryFile(delete=False) as tmp_file:
                 request.files["file"].save(tmp_file)
-                task = proccess_document.queue(tmp_file.name, {
+                remove_file.schedule(
+                    datetime.timedelta(seconds=app.config["ORIGINAL_FILE_TTL"])
+                , tmp_file.name)
+                task = process_document.queue(tmp_file.name, {
                     "formats": ["pdf", "txt", "html"]
                 })
         return {
             "id": task.id,
             "status": task.status,
         }
-
