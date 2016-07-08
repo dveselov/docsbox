@@ -44,12 +44,12 @@ class DocumentCreateView(Resource):
                 remove_file.schedule(
                     datetime.timedelta(seconds=app.config["ORIGINAL_FILE_TTL"])
                 , tmp_file.name)
-                with Magic() as magic:
+                with Magic() as magic: # detect mimetype
                     mimetype = magic.from_file(tmp_file.name)
                     if mimetype not in app.config["SUPPORTED_MIMETYPES"]:
                         return abort(400, message="Not supported mimetype: '{0}'".format(mimetype))
                 options = request.form.get("options", None)
-                if options:
+                if options: # options validation
                     options = ujson.loads(options)
                     formats = options.get("formats", None)
                     if not isinstance(formats, list) or not formats:
@@ -60,6 +60,21 @@ class DocumentCreateView(Resource):
                             if not supported:
                                 message = "'{0}' mimetype can't be converted to '{1}'"
                                 return abort(400, message=message.format(mimetype, fmt))
+                    thumbnails = options.get("thumbnails", None)
+                    if thumbnails:
+                        if not isinstance(thumbnails, dict):
+                            return abort(400, message="Invalid 'thumbnails' value")
+                        else:
+                            thumbnails_size = thumbnails.get("size", None)
+                            if not isinstance(thumbnails_size, str) or not thumbnails_size:
+                                return abort(400, message="Invalid 'size' value")
+                            else:
+                                try:
+                                    (width, height) = map(int, thumbnails_size.split("x"))
+                                except ValueError:
+                                    return abort(400, message="Invalid 'size' value")
+                                else:
+                                    options["thumbnails"]["size"] = (width, height)
                 else:
                     options = app.config["DEFAULT_OPTIONS"]
                 task = process_document.queue(tmp_file.name, options)
