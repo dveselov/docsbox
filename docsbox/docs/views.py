@@ -39,7 +39,7 @@ class DocumentCreateView(Resource):
         if "file" not in request.files:
             return abort(400, message="file field is required")
         else:
-            with NamedTemporaryFile(delete=False) as tmp_file:
+            with NamedTemporaryFile(delete=False, prefix=app.config["MEDIA_PATH"]) as tmp_file:
                 request.files["file"].save(tmp_file)
                 remove_file.schedule(
                     datetime.timedelta(seconds=app.config["ORIGINAL_FILE_TTL"])
