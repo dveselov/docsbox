@@ -1,3 +1,4 @@
+import ujson
 import datetime
 
 from magic import Magic
@@ -13,6 +14,9 @@ from docsbox.docs.tasks import remove_file, process_document
 class DocumentView(Resource):
 
     def get(self, task_id):
+        """
+        Returns information about task status.
+        """
         queue = rq.get_queue()
         task = queue.fetch_job(task_id)
         if task:
@@ -28,6 +32,10 @@ class DocumentView(Resource):
 class DocumentCreateView(Resource):
 
     def post(self):
+        """
+        Recieves file and options, checks file mimetype,
+        validates options and creates converting task
+        """
         if "file" not in request.files:
             return abort(400, message="file field is required")
         else:
@@ -40,9 +48,21 @@ class DocumentCreateView(Resource):
                     mimetype = magic.from_file(tmp_file.name)
                     if mimetype not in app.config["SUPPORTED_MIMETYPES"]:
                         return abort(400, message="Not supported mimetype: '{0}'".format(mimetype))
-                task = process_document.queue(tmp_file.name, {
-                    "formats": ["pdf", "txt", "html"]
-                })
+                options = request.form.get("options", None)
+                if options:
+                    options = ujson.loads(options)
+                    formats = options.get("formats", None)
+                    if not isinstance(formats, list) or not formats:
+                        return abort(400, message="Invalid 'formats' value")
+                    else:
+                        for fmt in formats:
+                            supported = (fmt in app.config["SUPPORTED_MIMETYPES"][mimetype]["formats"])
+                            if not supported:
+                                message = "'{0}' mimetype can't be converted to '{1}'"
+                                return abort(400, message=message.format(mimetype, fmt))
+                else:
+                    options = app.config["DEFAULT_OPTIONS"]
+                task = process_document.queue(tmp_file.name, options)
         return {
             "id": task.id,
             "status": task.status,
