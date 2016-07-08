@@ -36,6 +36,10 @@ class DocumentCreateView(Resource):
                 remove_file.schedule(
                     datetime.timedelta(seconds=app.config["ORIGINAL_FILE_TTL"])
                 , tmp_file.name)
+                with Magic() as magic:
+                    mimetype = magic.from_file(tmp_file.name)
+                    if mimetype not in app.config["SUPPORTED_MIMETYPES"]:
+                        return abort(400, message="Not supported mimetype: '{0}'".format(mimetype))
                 task = process_document.queue(tmp_file.name, {
                     "formats": ["pdf", "txt", "html"]
                 })
