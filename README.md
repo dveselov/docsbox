@@ -5,24 +5,12 @@ Docsbox converts yours doc/docx/etc. documents into pdf/html/txt and creates png
 ```bash
 $ curl -F "file=@kittens.docx" -i http://localhost:5000/api/v1/
 
-HTTP/1.0 200 OK
-Content-Type: application/json
-Content-Length: 77
-Server: Werkzeug/0.11.10 Python/3.5.1+
-Date: Fri, 08 Jul 2016 02:31:54 GMT
-
 {
     "id": "9b643d78-d0c8-4552-a0c5-111a89896176",
     "status": "queued"
 }
 
 $ curl -i http://localhost:5000/api/v1/9b643d78-d0c8-4552-a0c5-111a89896176
-
-HTTP/1.0 200 OK
-Content-Type: application/json
-Content-Length: 148
-Server: Werkzeug/0.11.10 Python/3.5.1+
-Date: Fri, 08 Jul 2016 02:32:27 GMT
 
 {
     "id": "9b643d78-d0c8-4552-a0c5-111a89896176",
@@ -31,11 +19,9 @@ Date: Fri, 08 Jul 2016 02:32:27 GMT
 }
 
 $ curl -O http://localhost:5000/media/9b643d78-d0c8-4552-a0c5-111a89896176.zip
-  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-100   233  100   233    0     0   9052      0 --:--:-- --:--:-- --:--:--  9320
 
 $ unzip -l 9b643d78-d0c8-4552-a0c5-111a89896176.zip 
+
 Archive:  9b643d78-d0c8-4552-a0c5-111a89896176.zip
   Length      Date    Time    Name
 ---------  ---------- -----   ----
@@ -65,4 +51,25 @@ GET /api/v1/{task_id}
 ```
 ORIGINAL_FILE_TTL - original file (word document/presentation/etc.) TTL (default: 10 minutes)
 RESULT_FILE_TTL - result file (zip archive) TTL (default: 24 hours)
+```
+
+# Install
+Currently, installing process is a bit complicated:
+
+```bash
+$ sudo apt-get install libffi-dev \ # used by CFFI-based packages
+                       libmagic-dev \ # used for files fingerprinting
+                       libmagickwand-dev \ # used in PDF-to-PNG conversion
+                       libreoffice libreofficekit-dev \ # used for other conversion directions
+                       redis-server # used in task queue
+$ virtualenv -p python3.5 env
+$ source env/bin/activate
+$ pip install -r requirements.txt
+$ gunicorn wsgi:app # -> http://127.0.0.1:8000
+```
+
+```bash
+# Start rqworker & rqscheduler
+$ rqworker
+$ rqscheduler
 ```
