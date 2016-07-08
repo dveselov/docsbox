@@ -45,3 +45,9 @@ Archive:  9b643d78-d0c8-4552-a0c5-111a89896176.zip
 ---------                     -------
    532169                     3 files
 ```
+
+# Settings
+```
+ORIGINAL_FILE_TTL - original file (word document/presentation/etc.) TTL (default: 10 minutes)
+RESULT_FILE_TTL - result file (zip archive) TTL
+```
