@@ -61,3 +61,10 @@ $ git pull https://github.com/docsbox/docsbox.git && cd docsbox
 $ docker-compose build
 $ docker-compose up
 ```
+
+It'll start 5 services:
+1. Web service (8080)  
+2. RQ worker service  
+3. RQ scheduler service  
+4. Nginx service (80)  
+5. Redis service  
