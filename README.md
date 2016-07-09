@@ -69,6 +69,7 @@ f6b55773c71d        docsbox_rqworker      "rq worker -c docsbox"   15 minutes ag
 
 ```
 REDIS_URL - redis-server url (default: redis://redis:6379/0)
+REDIS_JOB_TIMEOUT - job timeout (default: 10 minutes)
 ORIGINAL_FILE_TTL - TTL for uploaded file in seconds (default: 10 minutes)
 RESULT_FILE_TTL - TTL for result file in seconds (default: 24 hours)
 LIBREOFFICE_PATH - path to libreoffice (default: /usr/lib/libreoffice/program/)

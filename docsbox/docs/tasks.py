@@ -12,7 +12,7 @@ from docsbox import app, rq
 
 
 
-@rq.job
+@rq.job(timeout=app.config["REDIS_JOB_TIMEOUT"])
 def remove_file(path):
     """
     Just removes a file.
@@ -21,7 +21,7 @@ def remove_file(path):
     return os.remove(path)
 
 
-@rq.job
+@rq.job(timeout=app.config["REDIS_JOB_TIMEOUT"])
 def process_document(path, options):
     current_task = get_current_job()
     with Office(app.config["LIBREOFFICE_PATH"]) as office: # acquire libreoffice lock
