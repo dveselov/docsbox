@@ -74,3 +74,11 @@ ORIGINAL_FILE_TTL - TTL for uploaded file in seconds (default: 10 minutes)
 RESULT_FILE_TTL - TTL for result file in seconds (default: 24 hours)
 LIBREOFFICE_PATH - path to libreoffice (default: /usr/lib/libreoffice/program/)
 ```
+
+# Supported filetypes
+
+| Input                              | Output              | Thumbnails |
+| ---------------------------------- | ------------------- | ---------- |
+| Document (`doc` `docx` `odt`)      | `pdf` `txt` `html`  | [x]        |
+| Presentation (`ppt` `pptx` `odp`)  | `pdf` `html`        | [x]        |
+| Presentation (`xls` `xlsx` `ods`)  | `pdf` `csv` `html`  | [x]        |
