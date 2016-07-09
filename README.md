@@ -54,22 +54,10 @@ RESULT_FILE_TTL - result file (zip archive) TTL (default: 24 hours)
 ```
 
 # Install
-Currently, installing process is a bit complicated:
+Currently, installing powered by docker-compose:
 
 ```bash
-$ sudo apt-get install libffi-dev \ # used by CFFI-based packages
-                       libmagic-dev \ # used for files fingerprinting
-                       libmagickwand-dev \ # used in PDF-to-PNG conversion
-                       libreoffice libreofficekit-dev \ # used for other conversion directions
-                       redis-server # used in task queue
-$ virtualenv -p python3.5 env
-$ source env/bin/activate
-$ pip install -r requirements.txt
-$ gunicorn wsgi:app # -> http://127.0.0.1:8000
-```
-
-```bash
-# Start rqworker & rqscheduler
-$ rqworker
-$ rqscheduler
+$ git pull https://github.com/docsbox/docsbox.git && cd docsbox
+$ docker-compose build
+$ docker-compose up
 ```
