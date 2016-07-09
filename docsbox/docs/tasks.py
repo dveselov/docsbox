@@ -9,6 +9,7 @@ from tempfile import NamedTemporaryFile, TemporaryDirectory
 from rq import get_current_job
 
 from docsbox import app, rq
+from docsbox.docs.utils import make_thumbnails
 
 
 
@@ -39,16 +40,7 @@ def process_document(path, options):
                     else:
                         pdf_path = os.path.join(tmp_dir, "pdf")
                         image = Image(filename=pdf_path)
-                    thumbnails_folder = os.path.join(tmp_dir, "thumbnails/")
-                    os.mkdir(thumbnails_folder)
-                    (width, height) = options["thumbnails"]["size"]
-                    for index, page in enumerate(image.sequence):
-                        with Image(page) as page:
-                            filename = os.path.join(thumbnails_folder, "{0}.png".format(index))
-                            page.resize(width, height)
-                            page.save(filename=filename)
-                    else:
-                        image.close()
+                    thumbnails = make_thumbnails(image, tmp_dir, options["thumbnails"]["size"])
                 output_path = os.path.join(app.config["MEDIA_PATH"], current_task.id)
                 output_path = shutil.make_archive(output_path, "zip", tmp_dir)
                 result_url = os.path.join(app.config["MEDIA_URL"], output_path.split("/")[-1])
