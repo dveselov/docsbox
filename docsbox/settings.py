@@ -11,10 +11,6 @@ DEBUG = os.environ.get("DEBUG", False)
 REDIS_URL = os.environ.get("REDIS_URL", "redis://redis:6379/0")
 RQ_REDIS_URL = REDIS_URL
 
-# REDIS_HOST = 'redis'
-# REDIS_PORT = 6379
-# REDIS_DB = 0
-
 BASE_DIR = os.path.abspath(os.path.dirname(__file__)) 
 MEDIA_PATH = os.path.join(BASE_DIR, "media/")
 MEDIA_URL = "/media/"
