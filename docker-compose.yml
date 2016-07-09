@@ -32,7 +32,7 @@ nginx:
   restart: always
   build: ./nginx/
   ports:
-    - "8080:80"
+    - "80:80"
   volumes_from:
     - web
   links:
