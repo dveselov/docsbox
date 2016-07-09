@@ -36,6 +36,7 @@ SUPPORTED_FORMATS = {
 
 DOCUMENT_EXPORT_FORMATS = ["pdf", "txt", "html"]
 SPREADSHEET_EXPORT_FORMATS = ["pdf", "csv", "html"]
+PRESENTATION_EXPORT_FORMATS = ["pdf", "html"]
 
 SUPPORTED_MIMETYPES = {
     # Microsoft Word 2003
@@ -64,6 +65,21 @@ SUPPORTED_MIMETYPES = {
     # LibreOffice Calc
     "application/vnd.oasis.opendocument.spreadsheet": {
         "formats": SPREADSHEET_EXPORT_FORMATS,
+    },
+
+    # Microsoft Powerpoint 2003
+    "application/vnd.ms-powerpoint": {
+        "formats": PRESENTATION_EXPORT_FORMATS,
+    },
+
+    # Microsoft Powerpoint 2007
+    "application/application/vnd.openxmlformats-officedocument.presentationml.presentation": {
+        "formats": PRESENTATION_EXPORT_FORMATS,
+    },
+
+    # LibreOffice Impress
+    "application/vnd.oasis.opendocument.presentation": {
+        "formats": PRESENTATION_EXPORT_FORMATS,
     },
 }
 
