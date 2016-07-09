@@ -1,6 +1,9 @@
 server {
 
     listen 80;
+
+    client_max_body_size 10m;
+
     charset utf-8;
 
     location /media {
