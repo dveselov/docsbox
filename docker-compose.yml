@@ -1,8 +1,8 @@
 web:
   restart: always
   build: ./docsbox
-  ports:
-    - "8000:8000"
+  expose:
+    - "8000"
   links:
     - redis:redis
   volumes:
@@ -27,6 +27,16 @@ rqscheduler:
   volumes_from:
     - web
   command: rqscheduler -H redis -p 6379 -d 0
+
+nginx:
+  restart: always
+  build: ./nginx/
+  ports:
+    - "8080:80"
+  volumes_from:
+    - web
+  links:
+    - web:web
 
 redis:
   restart: always
