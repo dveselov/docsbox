@@ -12,5 +12,5 @@ RUN apt-get install -y libreoffice libreofficekit-dev
 RUN apt-get install -y python3-dev python3-pip git
 
 ADD . /home/docsbox
-WORKDIR /home/docsbox
-RUN pip3 install -r requirements.txt
+WORKDIR /home/
+RUN pip3 install -r docsbox/requirements.txt

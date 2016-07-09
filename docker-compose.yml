@@ -1,23 +1,22 @@
 web:
   restart: always
   build: ./docsbox
-  expose:
-    - "8000"
+  ports:
+    - "8000:8000"
   links:
     - redis:redis
   volumes:
-    - /home/docsbox
+    - ./docsbox:/home/docsbox
     - /tmp/media:/home/docsbox/media
-  command: gunicorn docsbox:app -w 2 -b :8000
+  command: gunicorn -b :8000 docsbox:app
 
 rqworker:
   restart: always
   build: ./docsbox
   links:
     - redis:redis
-  volumes:
-    - .:/home/docsbox
-    - /home/docsbox/media
+  volumes_from:
+    - web
   command: rq worker -c docsbox.settings
 
 rqscheduler:
@@ -25,9 +24,8 @@ rqscheduler:
   build: ./docsbox
   links:
     - redis:redis
-  volumes:
-    - .:/home/docsbox
-    - /home/docsbox/media
+  volumes_from:
+    - web
   command: rqscheduler -H redis -p 6379 -d 0
 
 redis:
