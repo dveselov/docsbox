@@ -52,7 +52,7 @@ SUPPORTED_MIMETYPES = {
     },
 
     # Microsoft Excel 2003
-    "application/vnd.ms-office": {
+    "application/vnd.ms-excel": {
         "formats": SPREADSHEET_EXPORT_FORMATS,
     },
 
