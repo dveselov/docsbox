@@ -1,6 +1,26 @@
 import os
+import zipfile
 
 from wand.image import Image
+
+from docsbox import app
+
+
+def make_zip_archive(uuid, tmp_dir):
+    """
+    Creates ZIP archive from given @tmp_dir.
+    """
+    zipname = "{0}.zip".format(uuid)
+    result_path = os.path.join(app.config["MEDIA_PATH"],
+                               zipname)
+    result_url = os.path.join(app.config["MEDIA_URL"],
+                              zipname)
+    with zipfile.ZipFile(result_path, "w") as output:
+        for dirname, subdirs, files in os.walk(tmp_dir):
+            for filename in files:
+                path = os.path.join(dirname, filename)
+                output.write(path, path.split(tmp_dir)[1])
+    return result_path, result_url
 
 
 def make_thumbnails(image, tmp_dir, size):

@@ -9,7 +9,7 @@ from tempfile import NamedTemporaryFile, TemporaryDirectory
 from rq import get_current_job
 
 from docsbox import app, rq
-from docsbox.docs.utils import make_thumbnails
+from docsbox.docs.utils import make_zip_archive, make_thumbnails
 
 
 
@@ -41,8 +41,9 @@ def process_document(path, options):
                         pdf_path = os.path.join(tmp_dir, "pdf")
                         image = Image(filename=pdf_path)
                     thumbnails = make_thumbnails(image, tmp_dir, options["thumbnails"]["size"])
-                output_path = os.path.join(app.config["MEDIA_PATH"], current_task.id)
-                output_path = shutil.make_archive(output_path, "zip", tmp_dir)
-                result_url = os.path.join(app.config["MEDIA_URL"], output_path.split("/")[-1])
-        remove_file.schedule(datetime.timedelta(seconds=app.config["RESULT_FILE_TTL"]), output_path)
+                result_path, result_url = make_zip_archive(current_task.id, tmp_dir)
+        remove_file.schedule(
+            datetime.timedelta(seconds=app.config["RESULT_FILE_TTL"]),
+            result_path
+        )
     return result_url
