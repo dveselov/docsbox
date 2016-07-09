@@ -37,7 +37,7 @@ Archive:  9b643d78-d0c8-4552-a0c5-111a89896176.zip
 ```
 POST (multipart/form-data) /api/v1/
 file=@kittens.docx
-options={ # optional
+options={ # json, optional
     "formats": ["pdf"] # desired formats to be converted in, optional
     "thumbnails": { # optional
         "size": "320x240",
@@ -45,12 +45,6 @@ options={ # optional
 }
 
 GET /api/v1/{task_id}
-```
-
-# Settings
-```
-ORIGINAL_FILE_TTL - original file (word document/presentation/etc.) TTL (default: 10 minutes)
-RESULT_FILE_TTL - result file (zip archive) TTL (default: 24 hours)
 ```
 
 # Install
