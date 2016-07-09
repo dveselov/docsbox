@@ -57,7 +57,7 @@ RESULT_FILE_TTL - result file (zip archive) TTL (default: 24 hours)
 Currently, installing powered by docker-compose:
 
 ```bash
-$ git pull https://github.com/docsbox/docsbox.git && cd docsbox
+$ git clone https://github.com/docsbox/docsbox.git && cd docsbox
 $ docker-compose build
 $ docker-compose up
 ```
