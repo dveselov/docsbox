@@ -57,5 +57,5 @@ DEFAULT_OPTIONS = {
 
 LIBREOFFICE_PATH = os.environ.get("LIBREOFFICE_PATH", "/usr/lib/libreoffice/program/") # for ubuntu 16.04
 
-ORIGINAL_FILE_TTL = 60 * 10 # 10 minutes
-RESULT_FILE_TTL = 60 * 60 * 24 # 24 hours
+ORIGINAL_FILE_TTL = int(os.environ.get("ORIGINAL_FILE_TTL", str(60 * 10))) # 10 minutes
+RESULT_FILE_TTL = int(os.environ.get("RESULT_FILE_TTL", str(60 * 60 * 24))) # 24 hours
