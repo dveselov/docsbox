@@ -12,7 +12,7 @@ class BaseTestCase(unittest.TestCase):
         self.app.config["RQ_ASYNC"] = False
         self.samples = os.path.join(
             self.app.config["BASE_DIR"],
-            "docsbox/docs/tests/samples/"
+            "docs/tests/samples/"
         )
         self.client = docsbox.app.test_client()
 
