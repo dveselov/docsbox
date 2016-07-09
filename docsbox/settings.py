@@ -27,10 +27,15 @@ SUPPORTED_FORMATS = {
     "html": {
         "path": "html",
         "fmt": "html",
+    },
+    "csv": {
+        "path": "csv",
+        "fmt": "csv",
     }
 }
 
 DOCUMENT_EXPORT_FORMATS = ["pdf", "txt", "html"]
+SPREADSHEET_EXPORT_FORMATS = ["pdf", "csv", "html"]
 
 SUPPORTED_MIMETYPES = {
     # Microsoft Word 2003
@@ -44,6 +49,21 @@ SUPPORTED_MIMETYPES = {
     # LibreOffice Writer
     "application/vnd.oasis.opendocument.text": {
         "formats": DOCUMENT_EXPORT_FORMATS,
+    },
+
+    # Microsoft Excel 2003
+    "application/vnd.ms-office": {
+        "formats": SPREADSHEET_EXPORT_FORMATS,
+    },
+
+    # Microsoft Excel 2007
+    "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet": {
+        "formats": SPREADSHEET_EXPORT_FORMATS,
+    },
+
+    # LibreOffice Calc
+    "application/vnd.oasis.opendocument.spreadsheet": {
+        "formats": SPREADSHEET_EXPORT_FORMATS,
     },
 }
 
