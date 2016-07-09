@@ -73,7 +73,7 @@ SUPPORTED_MIMETYPES = {
     },
 
     # Microsoft Powerpoint 2007
-    "application/application/vnd.openxmlformats-officedocument.presentationml.presentation": {
+    "application/vnd.openxmlformats-officedocument.presentationml.presentation": {
         "formats": PRESENTATION_EXPORT_FORMATS,
     },
 
