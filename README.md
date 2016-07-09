@@ -64,3 +64,12 @@ f6b55773c71d        docsbox_rqworker      "rq worker -c docsbox"   15 minutes ag
 0364df126b36        docsbox_web           "gunicorn -b :8000 do"   15 minutes ago      Up 8 minutes        8000/tcp                 docsbox_web_1
 5e8c8481e288        redis:latest          "docker-entrypoint.sh"   9 hours ago         Up 8 minutes        0.0.0.0:6379->6379/tcp   docsbox_redis_1
 ```
+
+# Settings (env)
+
+```
+REDIS_URL - redis-server url (default: redis://redis:6379/0)
+ORIGINAL_FILE_TTL - TTL for uploaded file in seconds (default: 10 minutes)
+RESULT_FILE_TTL - TTL for result file in seconds (default: 24 hours)
+LIBREOFFICE_PATH - path to libreoffice (default: /usr/lib/libreoffice/program/)
+```
