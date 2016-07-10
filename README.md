@@ -118,6 +118,6 @@ LIBREOFFICE_PATH - path to libreoffice (default: /usr/lib/libreoffice/program/)
 
 | Input                              | Output              | Thumbnails |
 | ---------------------------------- | ------------------- | ---------- |
-| Document (`doc` `docx` `odt`)      | `pdf` `txt` `html`  | `yes`      |
-| Presentation (`ppt` `pptx` `odp`)  | `pdf` `html`        | `yes`      |
-| Spreadsheet (`xls` `xlsx` `ods`)   | `pdf` `csv` `html`  | `yes`      |
+| Document `doc` `docx` `odt` `rtf`  | `pdf` `txt` `html`  | `yes`      |
+| Presentation `ppt` `pptx` `odp`    | `pdf` `html`        | `yes`      |
+| Spreadsheet `xls` `xlsx` `ods`     | `pdf` `csv` `html`  | `yes`      |

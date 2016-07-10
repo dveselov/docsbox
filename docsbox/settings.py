@@ -44,12 +44,18 @@ SUPPORTED_MIMETYPES = {
     "application/msword": {
         "formats": DOCUMENT_EXPORT_FORMATS,
     },
+    
     # Microsoft Word 2007
     "application/vnd.openxmlformats-officedocument.wordprocessingml.document": {
         "formats": DOCUMENT_EXPORT_FORMATS,
     },
+    
     # LibreOffice Writer
     "application/vnd.oasis.opendocument.text": {
+        "formats": DOCUMENT_EXPORT_FORMATS,
+    },
+
+    "text/rtf": {
         "formats": DOCUMENT_EXPORT_FORMATS,
     },
 
