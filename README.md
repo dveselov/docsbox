@@ -30,7 +30,7 @@ Archive:  9b643d78-d0c8-4552-a0c5-111a89896176.zip
    532169                     3 files
 ```
 
-```
+```bash
 cat options.json 
 {
   "formats": ["pdf"],
