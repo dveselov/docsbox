@@ -1,14 +1,14 @@
 # docsbox [![Build Status](https://travis-ci.org/docsbox/docsbox.svg?branch=master)](https://travis-ci.org/docsbox/docsbox)
 
 ```bash
-$ curl -F "file=@kittens.docx" -i http://dev.scrib.ro/api/v1/
+$ curl -F "file=@kittens.docx" http://dev.scrib.ro/api/v1/
 
 {
     "id": "9b643d78-d0c8-4552-a0c5-111a89896176",
     "status": "queued"
 }
 
-$ curl -i http://dev.scrib.ro/api/v1/9b643d78-d0c8-4552-a0c5-111a89896176
+$ curl http://dev.scrib.ro/api/v1/9b643d78-d0c8-4552-a0c5-111a89896176
 
 {
     "id": "9b643d78-d0c8-4552-a0c5-111a89896176",
@@ -28,6 +28,45 @@ Archive:  9b643d78-d0c8-4552-a0c5-111a89896176.zip
    147050  2016-07-08 05:31   html
 ---------                     -------
    532169                     3 files
+```
+
+```
+cat options.json 
+{
+  "formats": ["pdf"],
+  "thumbnails": {
+    "size": "640x480",
+  }
+}
+
+$ curl -i -F "file=@kittens.ppt" -F "options=<options.json" http://dev.scrib.ro/api/v1/
+
+{
+  "id": "afb58e2b-78fa-4dd7-b7f9-a64f75f50cb1",
+  "status": "queued"
+}
+
+$ curl http://dev.scrib.ro/api/v1/afb58e2b-78fa-4dd7-b7f9-a64f75f50cb1
+
+{
+  "id": "afb58e2b-78fa-4dd7-b7f9-a64f75f50cb1",
+  "status": "finished",
+  "result_url": "/media/afb58e2b-78fa-4dd7-b7f9-a64f75f50cb1.zip"
+}
+
+$ curl -O http://dev.scrib.ro/media/afb58e2b-78fa-4dd7-b7f9-a64f75f50cb1.zip
+
+$ unzip -l afb58e2b-78fa-4dd7-b7f9-a64f75f50cb1.zip
+Archive:  afb58e2b-78fa-4dd7-b7f9-a64f75f50cb1.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+   779820  2016-07-10 02:02   pdf
+   177357  2016-07-10 02:02   thumbnails/0.png
+                              ...
+   130923  2016-07-10 02:02   thumbnails/30.png
+---------                     -------
+ 13723770                     32 files
+
 ```
 
 # API
