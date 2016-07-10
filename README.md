@@ -1,4 +1,4 @@
-# docsbox
+# docsbox [![Build Status](https://travis-ci.org/docsbox/docsbox.svg?branch=master)](https://travis-ci.org/docsbox/docsbox)
 
 ```bash
 $ curl -F "file=@kittens.docx" -i http://dev.scrib.ro/api/v1/
