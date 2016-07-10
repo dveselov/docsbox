@@ -55,6 +55,7 @@ SUPPORTED_MIMETYPES = {
         "formats": DOCUMENT_EXPORT_FORMATS,
     },
 
+    # Rich Text Format
     "text/rtf": {
         "formats": DOCUMENT_EXPORT_FORMATS,
     },
