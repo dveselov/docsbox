@@ -31,7 +31,7 @@ Archive:  9b643d78-d0c8-4552-a0c5-111a89896176.zip
 ```
 
 ```bash
-cat options.json 
+$ cat options.json 
 {
   "formats": ["pdf"],
   "thumbnails": {
