@@ -1,7 +1,7 @@
 sudo: required
-
+language: python
 services:
   - docker
 
 script:
-  - docker-compose run web pip3 install nose && nosetests
+  - docker-compose run web nosetests
