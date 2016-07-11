@@ -99,3 +99,5 @@ LIBREOFFICE_PATH = os.environ.get("LIBREOFFICE_PATH", "/usr/lib/libreoffice/prog
 
 ORIGINAL_FILE_TTL = int(os.environ.get("ORIGINAL_FILE_TTL", str(60 * 10))) # 10 minutes
 RESULT_FILE_TTL = int(os.environ.get("RESULT_FILE_TTL", str(60 * 60 * 24))) # 24 hours
+
+THUMBNAILS_DPI = int(os.environ.get("THUMBNAILS_DPI", str(90))) # dpi

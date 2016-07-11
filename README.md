@@ -111,6 +111,7 @@ REDIS_URL - redis-server url (default: redis://redis:6379/0)
 REDIS_JOB_TIMEOUT - job timeout (default: 10 minutes)
 ORIGINAL_FILE_TTL - TTL for uploaded file in seconds (default: 10 minutes)
 RESULT_FILE_TTL - TTL for result file in seconds (default: 24 hours)
+THUMBNAILS_DPI - thumbnails dpi, for bigger thumbnails choice bigger values (default: 90)
 LIBREOFFICE_PATH - path to libreoffice (default: /usr/lib/libreoffice/program/)
 ```
 

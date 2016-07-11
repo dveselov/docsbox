@@ -36,10 +36,12 @@ def process_document(path, options):
                     if "pdf" not in options["formats"]:
                         with NamedTemporaryFile() as pdf_tmp_file:
                             original_document.saveAs(pdf_tmp_file.name, fmt="pdf")
-                            image = Image(filename=pdf_tmp_file.name)
+                            image = Image(filename=pdf_tmp_file.name,
+                                          resolution=app.config["THUMBNAILS_DPI"])
                     else:
                         pdf_path = os.path.join(tmp_dir, "pdf")
-                        image = Image(filename=pdf_path)
+                        image = Image(filename=pdf_path,
+                                      resolution=app.config["THUMBNAILS_DPI"])
                     thumbnails = make_thumbnails(image, tmp_dir, options["thumbnails"]["size"])
                 result_path, result_url = make_zip_archive(current_task.id, tmp_dir)
         remove_file.schedule(
