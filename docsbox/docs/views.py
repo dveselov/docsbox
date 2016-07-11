@@ -57,6 +57,7 @@ class DocumentCreateView(Resource):
                     else:
                         for fmt in formats:
                             supported = (fmt in app.config["SUPPORTED_MIMETYPES"][mimetype]["formats"])
+                            print(fmt, supported)
                             if not supported:
                                 message = "'{0}' mimetype can't be converted to '{1}'"
                                 return abort(400, message=message.format(mimetype, fmt))
@@ -76,8 +77,15 @@ class DocumentCreateView(Resource):
                                 else:
                                     options["thumbnails"]["size"] = (width, height)
                 else:
-                    options = app.config["DEFAULT_OPTIONS"]
-                task = process_document.queue(tmp_file.name, options)
+                    if mimetype == "application/pdf":
+                        options = {
+                            "formats": ["html"]
+                        }
+                    else:
+                        options = app.config["DEFAULT_OPTIONS"]
+                task = process_document.queue(tmp_file.name, options, {
+                    "mimetype": mimetype,
+                })
         return {
             "id": task.id,
             "status": task.status,

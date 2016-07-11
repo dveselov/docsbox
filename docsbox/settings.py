@@ -38,6 +38,7 @@ SUPPORTED_FORMATS = {
 DOCUMENT_EXPORT_FORMATS = ["pdf", "txt", "html"]
 SPREADSHEET_EXPORT_FORMATS = ["pdf", "csv", "html"]
 PRESENTATION_EXPORT_FORMATS = ["pdf", "html"]
+PDF_EXPORT_FORMATS = ["html"]
 
 SUPPORTED_MIMETYPES = {
     # Microsoft Word 2003
@@ -53,6 +54,11 @@ SUPPORTED_MIMETYPES = {
     # LibreOffice Writer
     "application/vnd.oasis.opendocument.text": {
         "formats": DOCUMENT_EXPORT_FORMATS,
+    },
+
+    # Portable Document Format
+    "application/pdf": {
+        "formats": PDF_EXPORT_FORMATS,
     },
 
     # Rich Text Format
