@@ -1,7 +1,8 @@
 # docsbox [![Build Status](https://travis-ci.org/docsbox/docsbox.svg?branch=master)](https://travis-ci.org/docsbox/docsbox)
 
+Development server provided by [VScale.io](https://vscale.io/?refcode=6kf3rl7o7r)
+
 ```bash
-# Development server provided by VScale.io: https://vscale.io/?refcode=6kf3rl7o7r
 $ curl -F "file=@kittens.docx" http://dev.scrib.ro/api/v1/
 
 {
