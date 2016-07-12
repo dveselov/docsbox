@@ -115,6 +115,12 @@ THUMBNAILS_DPI - thumbnails dpi, for bigger thumbnails choice bigger values (def
 LIBREOFFICE_PATH - path to libreoffice (default: /usr/lib/libreoffice/program/)
 ```
 
+# Scaling
+Within a single physical server, docsbox can be scaled by docker-compose:
+```bash
+$ docker-compose scale web=4 rqworker=8
+```
+
 # Supported filetypes
 
 | Input                              | Output              | Thumbnails |
