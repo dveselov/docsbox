@@ -122,6 +122,7 @@ Within a single physical server, docsbox can be scaled by docker-compose:
 ```bash
 $ docker-compose scale web=4 rqworker=8
 ```
+For multi-host deployment you'll need to create global syncronized volume (e.g. with flocker), global redis-server and mount it at `docker-compose.yml` file.
 
 # Supported filetypes
 
