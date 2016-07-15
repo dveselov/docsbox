@@ -36,7 +36,7 @@ def process_document(path, options, meta):
                     is_created = False
                     if meta["mimetype"] == "application/pdf":
                         pdf_path = path
-                    elif pdf in options["formats"]:
+                    elif "pdf" in options["formats"]:
                         pdf_path = os.path.join(tmp_dir, "pdf")
                     else:
                         pdf_tmp_file = NamedTemporaryFile()
