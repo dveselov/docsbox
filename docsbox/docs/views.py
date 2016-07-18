@@ -57,7 +57,6 @@ class DocumentCreateView(Resource):
                     else:
                         for fmt in formats:
                             supported = (fmt in app.config["SUPPORTED_MIMETYPES"][mimetype]["formats"])
-                            print(fmt, supported)
                             if not supported:
                                 message = "'{0}' mimetype can't be converted to '{1}'"
                                 return abort(400, message=message.format(mimetype, fmt))
