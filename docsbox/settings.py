@@ -1,16 +1,7 @@
 import os
 
-"""
-TODO:
-pylokit.lokit.LoKitExportError: b'no output filter found for provided suffix'
-Raised when trying to export to unsupported dest (eg. pptx -> txt)
-"""
-
-DEBUG = os.environ.get("DEBUG", False)
-
 REDIS_URL = os.environ.get("REDIS_URL", "redis://redis:6379/0")
 RQ_REDIS_URL = REDIS_URL
-REDIS_JOB_TIMEOUT = int(os.environ.get("REDIS_JOB_TIMEOUT", str(60 * 10))) # 10 minutes
 
 BASE_DIR = os.path.abspath(os.path.dirname(__file__)) 
 MEDIA_PATH = os.path.join(BASE_DIR, "media/")
@@ -101,12 +92,6 @@ DEFAULT_OPTIONS = {
     "formats": ["pdf"]
 }
 
-LIBREOFFICE_PATH = os.environ.get("LIBREOFFICE_PATH", "/usr/lib/libreoffice/program/") # for ubuntu 16.04
-
-ORIGINAL_FILE_TTL = int(os.environ.get("ORIGINAL_FILE_TTL", str(60 * 10))) # 10 minutes
-RESULT_FILE_TTL = int(os.environ.get("RESULT_FILE_TTL", str(60 * 60 * 24))) # 24 hours
-
-THUMBNAILS_DPI = int(os.environ.get("THUMBNAILS_DPI", str(90))) # dpi
 THUMBNAILS_QUANTIZE = False
 THUMBNAILS_QUANTIZE_COLORS = 128
 THUMBNAILS_QUANTIZE_COLORSPACE = "rgb"
