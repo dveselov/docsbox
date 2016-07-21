@@ -15,6 +15,9 @@ Settings(app, rules={
     "LIBREOFFICE_PATH": (str, "/usr/lib/libreoffice/program/"),
 
     "THUMBNAILS_DPI": (int, 90),
+    "THUMBNAILS_QUANTIZE": (bool, False),
+    "THUMBNAILS_QUANTIZE_COLORS": (int, 128),
+    "THUMBNAILS_QUANTIZE_COLORSPACE": (str, "rgb"),
 })
 
 api = Api(app)
