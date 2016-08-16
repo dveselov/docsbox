@@ -5,14 +5,14 @@
 Development server provided by [VScale.io](https://vscale.io/?refcode=6kf3rl7o7r)
 
 ```bash
-$ curl -F "file=@kittens.docx" http://dev.scrib.ro/api/v1/
+$ curl -F "file=@kittens.docx" http://localhost/api/v1/
 
 {
     "id": "9b643d78-d0c8-4552-a0c5-111a89896176",
     "status": "queued"
 }
 
-$ curl http://dev.scrib.ro/api/v1/9b643d78-d0c8-4552-a0c5-111a89896176
+$ curl http://localhost/api/v1/9b643d78-d0c8-4552-a0c5-111a89896176
 
 {
     "id": "9b643d78-d0c8-4552-a0c5-111a89896176",
@@ -20,7 +20,7 @@ $ curl http://dev.scrib.ro/api/v1/9b643d78-d0c8-4552-a0c5-111a89896176
     "status": "finished"
 }
 
-$ curl -O http://dev.scrib.ro/media/9b643d78-d0c8-4552-a0c5-111a89896176.zip
+$ curl -O http://localhost/media/9b643d78-d0c8-4552-a0c5-111a89896176.zip
 
 $ unzip -l 9b643d78-d0c8-4552-a0c5-111a89896176.zip 
 
@@ -43,14 +43,14 @@ $ cat options.json
   }
 }
 
-$ curl -i -F "file=@kittens.ppt" -F "options=<options.json" http://dev.scrib.ro/api/v1/
+$ curl -i -F "file=@kittens.ppt" -F "options=<options.json" http://localhost/api/v1/
 
 {
   "id": "afb58e2b-78fa-4dd7-b7f9-a64f75f50cb1",
   "status": "queued"
 }
 
-$ curl http://dev.scrib.ro/api/v1/afb58e2b-78fa-4dd7-b7f9-a64f75f50cb1
+$ curl http://localhost/api/v1/afb58e2b-78fa-4dd7-b7f9-a64f75f50cb1
 
 {
   "id": "afb58e2b-78fa-4dd7-b7f9-a64f75f50cb1",
@@ -58,7 +58,7 @@ $ curl http://dev.scrib.ro/api/v1/afb58e2b-78fa-4dd7-b7f9-a64f75f50cb1
   "result_url": "/media/afb58e2b-78fa-4dd7-b7f9-a64f75f50cb1.zip"
 }
 
-$ curl -O http://dev.scrib.ro/media/afb58e2b-78fa-4dd7-b7f9-a64f75f50cb1.zip
+$ curl -O http://localhost/media/afb58e2b-78fa-4dd7-b7f9-a64f75f50cb1.zip
 
 $ unzip -l afb58e2b-78fa-4dd7-b7f9-a64f75f50cb1.zip
 Archive:  afb58e2b-78fa-4dd7-b7f9-a64f75f50cb1.zip
