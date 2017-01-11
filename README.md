@@ -1,6 +1,7 @@
 # docsbox [![Build Status](https://travis-ci.org/docsbox/docsbox.svg?branch=master)](https://travis-ci.org/docsbox/docsbox)
 
-`docsbox` is a standalone service that allows you convert office documents, like .docx and .pptx, into more useful filetypes like PDF, for viewing it in browser with PDF.js, or HTML for organizing full-text search of document content.
+`docsbox` is a standalone service that allows you convert office documents, like .docx and .pptx, into more useful filetypes like PDF, for viewing it in browser with PDF.js, or HTML for organizing full-text search of document content.  
+`docsbox` uses **LibreOffice** (via **LibreOfficeKit**) for document converting.
 
 ```bash
 $ curl -F "file=@kittens.docx" http://localhost/api/v1/
