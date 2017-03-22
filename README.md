@@ -91,7 +91,7 @@ GET /api/v1/{task_id}
 Currently, installing powered by docker-compose:
 
 ```bash
-$ git clone https://github.com/docsbox/docsbox.git && cd docsbox
+$ git clone https://github.com/dveselov/docsbox.git && cd docsbox
 $ docker-compose build
 $ docker-compose up
 ```
